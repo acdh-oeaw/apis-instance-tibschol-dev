@@ -67,11 +67,12 @@ APIS_AUTOCOMPLETE_SETTINGS = "apis_ontology.settings.autocomplete_settings"
 
 INSTALLED_APPS += ["apis_bibsonomy"]
 
+INSTALLED_APPS.insert(0, "apis_override_select2js")  # must be added at the beginning
+
 APIS_RELATIONS_FILTER_EXCLUDE += ["annotation", "annotation_set_relation"]
 
 import sentry_sdk
-from apis_ontology.filters import (instance_name_filter, name_filter,
-                                   work_name_filter)
+from apis_ontology.filters import instance_name_filter, name_filter, work_name_filter
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
