@@ -105,7 +105,7 @@ django = "*"
 
 [package.source]
 type = "git"
-url = "git@github.com:acdh-oeaw/apis-override-select2js.git"
+url = "https://github.com/acdh-oeaw/apis-override-select2js.git"
 reference = "v0.1.0"
 resolved_reference = "5829622a64f783b2e38c66334375e64cd41372d4"
 
@@ -1491,4 +1491,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.12"
-content-hash = "c7f21306490878f3f683e533d1e44c6d614c3519c086d5000a921b0489a5492a"
+content-hash = "f30b67c52ae439dbfa26060fe4cdd46545c1e2c5ebe0d63a1229d65247cb9605"
