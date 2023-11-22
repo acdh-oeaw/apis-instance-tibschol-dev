@@ -21,6 +21,7 @@ def parse_comment(value):
     # subbed = re.sub(pattern, r'<a href="\2">\1</a>', value)
     # pattern = r"<<(.*?) \[([^\]]+)/([^]]+)]>>"
 
-    subbed = re.sub(pattern, r'<a href="/bibsonomy/references/\2">\1</a>', value)
+    # TODO: Where should it link?
+    subbed = re.sub(pattern, r'<a href="#">\1</a>', value)
 
     return subbed
