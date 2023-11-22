@@ -65,7 +65,6 @@ APIS_AUTOCOMPLETE_SETTINGS = "apis_ontology.settings.autocomplete_settings"
 # APIS_BLAZEGRAPH = ('https://blazegraph.herkules.arz.oeaw.ac.at/metaphactory-play/sparql', 'metaphactory-play', 'KQCsD24treDY')
 # INSTALLED_APPS += ["apis_ontology"]
 
-INSTALLED_APPS += ["apis_bibsonomy"]
 
 INSTALLED_APPS.insert(0, "apis_override_select2js")  # must be added at the beginning
 
@@ -154,17 +153,3 @@ APIS_ENTITIES = {
 ONTOLOGY_DIR = os.path.dirname(os.path.dirname(__file__))
 for template in TEMPLATES:
     template["DIRS"].append(os.path.join(ONTOLOGY_DIR, "templates"))
-
-APIS_BIBSONOMY_FIELDS = ["provenance", "external_link", "comments"]
-
-APIS_BIBSONOMY = [
-    {
-        "type": "zotero",  # or zotero
-        "url": "https://api.zotero.org",  # url of the bibsonomy instance or zotero.org
-        "user": os.environ.get(
-            "APIS_BIBSONOMY_USER"
-        ),  # for zotero use the user id number found in settings
-        "API key": os.environ.get("APIS_BIBSONOMY_PASSWORD"),
-        "group": "4394244",
-    }
-]
