@@ -199,6 +199,6 @@ class ZoteroEntry(models.Model):
     zoteroId = models.CharField(max_length=255, verbose_name="Zotero ID")
     shortTitle = models.TextField(blank=True, null=True, verbose_name="Short title")
     fullCitation = models.TextField(blank=True, null=True, verbose_name="Full Citation")
-    year = models.IntegerField(
-        blank=True, null=True, verbose_name="Year of publication"
+    year = models.CharField(
+        max_length=255, blank=True, null=True, verbose_name="Year of publication"
     )
