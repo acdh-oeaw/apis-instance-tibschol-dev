@@ -1,11 +1,11 @@
 import logging
-import os, requests
-from django.core.management.base import BaseCommand
-import requests, os
-from requests.auth import HTTPBasicAuth
+import os
+
 import pandas as pd
-from tqdm.auto import tqdm
+import requests
 from apis_ontology.models import ZoteroEntry
+from django.core.management.base import BaseCommand
+from tqdm.auto import tqdm
 
 USER = os.environ.get("APIS_BIBSONOMY_USER")
 KEY = os.environ.get("APIS_BIBSONOMY_PASSWORD")
