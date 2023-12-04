@@ -65,6 +65,7 @@ APIS_AUTOCOMPLETE_SETTINGS = "apis_ontology.settings.autocomplete_settings"
 # APIS_BLAZEGRAPH = ('https://blazegraph.herkules.arz.oeaw.ac.at/metaphactory-play/sparql', 'metaphactory-play', 'KQCsD24treDY')
 # INSTALLED_APPS += ["apis_ontology"]
 
+INSTALLED_APPS += ["apis_core.relations"]
 
 INSTALLED_APPS.insert(0, "apis_override_select2js")  # must be added at the beginning
 
