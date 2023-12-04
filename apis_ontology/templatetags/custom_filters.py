@@ -25,7 +25,7 @@ def parse_comment(value):
     # TODO: Where should it link?
     subbed = re.sub(
         pattern,
-        r'<a href="https://www.zotero.org/groups/4394244/tibschol/items/\2/item-details#">\1</a>',
+        r'<a target="_BLANK" href="https://www.zotero.org/groups/4394244/tibschol/items/\2/item-details#">\1</a>',
         value,
     )
 
