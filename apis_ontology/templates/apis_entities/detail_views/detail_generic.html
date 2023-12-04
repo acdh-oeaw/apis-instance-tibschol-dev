@@ -191,7 +191,13 @@
                 <tr>
                   <th>{{ x.0 }}</th>
                   <td>
-                    <small>{{ x.1 }}</small>
+                    <small>
+                      {% ifequal x.0 "comments" %}
+                      {{ x.1 | parse_comment | safe}}
+                      {% else %}
+                      {{ x.1 }}
+                      {% endifequal %}
+                    </small>
                   </td>
                 </tr>
                 {% endfor %}
