@@ -4,6 +4,8 @@
 {% block scriptHeader %}
 {{ block.super }}
 
+{% load relations %}
+
 {% if highlighter_active %}
 <link rel="stylesheet"
       href="{% static 'apis_highlighter/apis_highlighter.css' %}" />
@@ -190,9 +192,9 @@
                                 </div>
                                 <hr />
                                 {% endblock additional_accordion %}
-
                                 {% block relations %}
-                                {% for obj in right_card %}
+                                {% instance_can_be_related_to instance as contenttypes %}
+                                {% for contenttype in contenttypes %}
                                 <div class="card card-default">
                                     <div class="card-header" role="tab" id="heading{{ forloop.counter }}">
                                         <h4 class="card-title">
@@ -201,17 +203,19 @@
                                                data-parent="#accordion"
                                                href="#collapse{{ forloop.counter }}"
                                                aria-expanded="true"
-                                               aria-controls="collapse{{ forloop.counter }}">{{ obj.0 }}</a>
+                                               aria-controls="collapse{{ forloop.counter }}">{{ contenttype.name }}</a>
                                         </h4>
                                     </div>
-                                    <div id="collapse{{ forloop.counter }}" class="card-collapse collapse
-                                             {% if obj.3 %}in{% endif %}
-                                             " role="tabcard" aria-labelledby="heading{{ forloop.counter }}">
-                                        <div id="tab_{{ obj.2 }}" class="card-body">{% render_table obj.1 %}</div>
+                                    <div id="collapse{{ forloop.counter }}" class="card-collapse collapse" role="tabcard" aria-labelledby="heading{{ forloop.counter }}">
+                                        <div id="tab_{{ obj.2 }}" class="card-body">
+                                            {% relations_table instance=instance tocontenttype=contenttype as table %}
+                                            {% render_table table %}
+
+                                            {% relations_links instance=instance tocontenttype=contenttype htmx=True %}
+                                        </div>
                                     </div>
-                                </div>
-                                {% endfor %}
-                                {% endblock relations %}
+                                    {% endfor %}
+                                    {% endblock relations %}
 
                             </div>
                         </div>
