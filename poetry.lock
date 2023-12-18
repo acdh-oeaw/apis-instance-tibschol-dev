@@ -47,10 +47,10 @@ six = "*"
 
 [[package]]
 name = "apis-core"
-version = "0.2.0"
+version = "0.3.0"
 description = "Base package for the APIS framework"
 optional = false
-python-versions = ">=3.11, <3.12"
+python-versions = "^3.11"
 files = []
 develop = false
 
@@ -89,8 +89,8 @@ unicodecsv = "^0.14.1"
 [package.source]
 type = "git"
 url = "https://github.com/acdh-oeaw/apis-core-rdf.git"
-reference = "v0.2.0"
-resolved_reference = "82a2fc00de8e62c94aaa10c3302c7000aa9699bc"
+reference = "birger/relations-ng"
+resolved_reference = "c9beba84ce3f02a13f8ae9ba7f4cb87fdcfc48d6"
 
 [[package]]
 name = "apis-override-select2js"
@@ -3083,4 +3083,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.12"
-content-hash = "e9644c06e898f93c03c860b37103563124916d005cf05b6ccd1cf2688c435275"
+content-hash = "e42277892557969b6e0da0f2f71b1de16e0cabfae72ab896a396fcd6bf7786ed"
