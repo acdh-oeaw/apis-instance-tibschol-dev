@@ -10,6 +10,8 @@
 
 {% block scriptHeader %}
     {{ block.super }}
+    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+
 
     {% if tei %}
         <link rel="stylesheet"
@@ -24,8 +26,6 @@
 {% endblock scriptHeader %}
 
 {% block content %}
-    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
-
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">
