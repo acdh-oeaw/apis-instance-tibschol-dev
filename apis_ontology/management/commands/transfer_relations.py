@@ -32,13 +32,17 @@ class Command(BaseCommand):
             if new_rel is not None:
                 continue
 
-            new_rel = new_model(subj=tt.subj,
-                                obj=tt.obj, notes=tt.notes, start_date=tt.start_date, start_start_date=tt.start_start_date,start_end_date=tt.start_end_date,start_date_written=tt.start_date_written,)
+            new_rel = new_model(
+                subj=tt.subj,
+                obj=tt.obj,
+                notes=tt.notes,
+                start_date=tt.start_date,
+                start_start_date=tt.start_start_date,
+                start_end_date=tt.start_end_date,
+                start_date_written=tt.start_date_written,
+            )
 
             # Save the object to the database
             new_rel.save()
-
-
-
 
         print("Temp triples copied into new relations classes")
