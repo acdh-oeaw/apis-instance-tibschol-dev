@@ -5,6 +5,7 @@ from apis_core.apis_entities.models import TempEntityClass
 from apis_core.apis_relations.models import Property, Triple
 from django.db import models
 from django.utils.functional import cached_property
+from apis_core.relations.models import Relation
 
 logger = logging.getLogger(__name__)
 
@@ -202,3 +203,455 @@ class ZoteroEntry(models.Model):
     year = models.CharField(
         max_length=255, blank=True, null=True, verbose_name="Year of publication"
     )
+
+
+class TibScholRelation(models.Model):
+    CONFIDENCE = [
+        ("Positive", "Positive"),
+        ("Uncertain", "Uncertain"),
+        ("Negative", "Negative"),
+    ]
+
+    zotero_refs = models.TextField(blank=True, null=True, verbose_name="Zotero")
+    tei_refs = models.TextField(blank=True, null=True, verbose_name="Excerpts")
+    support_notes = models.TextField(
+        blank=True, null=True, verbose_name="Support notes"
+    )
+    confidence = models.CharField(
+        blank=True,
+        null=True,
+        default="Positive",
+        choices=CONFIDENCE,
+        verbose_name="Confidence",
+        max_length=1000,
+    )
+    start_date = models.DateField(blank=True, null=True)
+    start_start_date = models.DateField(blank=True, null=True)
+    start_end_date = models.DateField(blank=True, null=True)
+    end_date = models.DateField(blank=True, null=True)
+    end_start_date = models.DateField(blank=True, null=True)
+    end_end_date = models.DateField(blank=True, null=True)
+    start_date_written = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name="Start",
+    )
+    end_date_written = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name="End",
+    )
+    notes = models.TextField(blank=True, null=True)
+
+    temptriple_field_list = [
+        "notes",
+        "start_date",
+        "start_start_date",
+        "start_end_date",
+        "end_date",
+        "end_start_date",
+        "end_end_date",
+        "start_date_written",
+        "end_date_written",
+    ]
+
+    class Meta:
+        abstract = True
+
+
+class PersonActiveAtPlace(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Place
+    name = "active at"
+    name_reverse = "place of activity of"
+    temptriple_name = "active at"
+    temptriple_name_reverse = "place of activity of"
+
+
+class PersonAddresseeOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "addressee of"
+    name_reverse = "addressed to"
+    temptriple_name = "addressee of"
+    temptriple_name_reverse = "addressed to"
+
+
+class PersonAuntMaternalPaternalOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "aunt (maternal/paternal) of"
+    name_reverse = "nephew (maternal/paternal) of"
+    temptriple_name = "aunt (maternal/paternal) of"
+    temptriple_name_reverse = "nephew (maternal/paternal) of"
+
+
+class PersonAuthorOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "author of"
+    name_reverse = "composed by"
+    temptriple_name = "author of"
+    temptriple_name_reverse = "composed by"
+
+
+class PersonBiographedInWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "biographed in"
+    name_reverse = "biography of"
+    temptriple_name = "biographed in"
+    temptriple_name_reverse = "biography of"
+
+
+class PersonBiographerOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "biographer of"
+    name_reverse = "biographed by"
+    temptriple_name = "biographer of"
+    temptriple_name_reverse = "biographed by"
+
+
+class PersonCitesWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "cites"
+    name_reverse = "is cited by"
+    temptriple_name = "cites"
+    temptriple_name_reverse = "is cited by"
+
+
+class WorkCommentaryOnWork(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Work
+    name = "commentary on"
+    name_reverse = "has as a commentary"
+    temptriple_name = "commentary on"
+    temptriple_name_reverse = "has as a commentary"
+
+
+class WorkComposedAtPlace(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Place
+    name = "composed at"
+    name_reverse = "place of composition for"
+    temptriple_name = "composed at"
+    temptriple_name_reverse = "place of composition for"
+
+
+class WorkContainsCitationsOfWork(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Work
+    name = "contains citations of"
+    name_reverse = "is cited in"
+    temptriple_name = "contains citations of"
+    temptriple_name_reverse = "is cited in"
+
+
+class InstanceCopiedWrittenDownAtPlace(Relation, TibScholRelation):
+    subj_model = Instance
+    obj_model = Place
+    name = "copied/written down at"
+    name_reverse = "place of scribing for"
+    temptriple_name = "copied/written down at"
+    temptriple_name_reverse = "place of scribing for"
+
+
+class PersonDirectPredecessorInLineageOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "direct predecessor (in lineage) of"
+    name_reverse = "direct successor (in lineage) of"
+    temptriple_name = "direct predecessor (in lineage) of"
+    temptriple_name_reverse = "direct successor (in lineage) of"
+
+
+class PersonDiscipleOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "disciple of"
+    name_reverse = "spiritual teacher of"
+    temptriple_name = "disciple of"
+    temptriple_name_reverse = "spiritual teacher of"
+
+
+class PersonEditorOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "editor of"
+    name_reverse = "edited by"
+    temptriple_name = "editor of"
+    temptriple_name_reverse = "edited by"
+
+
+class PersonFellowMonkOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "fellow monk of"
+    name_reverse = "fellow monk of"
+    temptriple_name = "fellow monk of"
+    temptriple_name_reverse = "fellow monk of"
+
+
+class PersonFellowStudentOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "fellow student of"
+    name_reverse = "fellow student of"
+    temptriple_name = "fellow student of"
+    temptriple_name_reverse = "fellow student of"
+
+
+class WorkHasAsAnInstanceInstance(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Instance
+    name = "has as an instance"
+    name_reverse = "instance of"
+    temptriple_name = "has as an instance"
+    temptriple_name_reverse = "instance of"
+
+
+class PersonHasOtherTypeOfPersonalRelationToPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "has other type of personal relation to"
+    name_reverse = "has other type of personal relation to"
+    temptriple_name = "has other type of personal relation to"
+    temptriple_name_reverse = "has other type of personal relation to"
+
+
+class PersonIllustratorOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "illustrator of"
+    name_reverse = "illustrated by"
+    temptriple_name = "illustrator of"
+    temptriple_name_reverse = "illustrated by"
+
+
+class InstanceIsCopiedFromInstance(Relation, TibScholRelation):
+    subj_model = Instance
+    obj_model = Instance
+    name = "is copied from"
+    name_reverse = "is source for"
+    temptriple_name = "is copied from"
+    temptriple_name_reverse = "is source for"
+
+
+class PlaceIsLocatedWithinPlace(Relation, TibScholRelation):
+    subj_model = Place
+    obj_model = Place
+    name = "is located within"
+    name_reverse = "contains"
+    temptriple_name = "is located within"
+    temptriple_name_reverse = "contains"
+
+
+class PersonLenderOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "lender of"
+    name_reverse = "lent by"
+    temptriple_name = "lender of"
+    temptriple_name_reverse = "lent by"
+
+
+class WorkNamesPerson(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Person
+    name = "names"
+    name_reverse = "is named in"
+    temptriple_name = "names"
+    temptriple_name_reverse = "is named in"
+
+
+class WorkNamesWork(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Work
+    name = "names"
+    name_reverse = "is named in"
+    temptriple_name = "names"
+    temptriple_name_reverse = "is named in"
+
+
+class PersonOrdinatorOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "ordinator of"
+    name_reverse = "ordained by"
+    temptriple_name = "ordinator of"
+    temptriple_name_reverse = "ordained by"
+
+
+class PersonOwnerOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "owner of"
+    name_reverse = "owned by"
+    temptriple_name = "owner of"
+    temptriple_name_reverse = "owned by"
+
+
+class PersonParentOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "parent of"
+    name_reverse = "child of"
+    temptriple_name = "parent of"
+    temptriple_name_reverse = "child of"
+
+
+class PersonPatronOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "patron of"
+    name_reverse = "protegee of"
+    temptriple_name = "patron of"
+    temptriple_name_reverse = "protegee of"
+
+
+class PersonPromoterOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "promoter of"
+    name_reverse = "promoted by"
+    temptriple_name = "promoter of"
+    temptriple_name_reverse = "promoted by"
+
+
+class PersonPrompterOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "prompter of"
+    name_reverse = "prompted by"
+    temptriple_name = "prompter of"
+    temptriple_name_reverse = "prompted by"
+
+
+class WorkQuotesWithNameTheViewsOfPerson(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Person
+    name = "quotes (with name) the views of"
+    name_reverse = "has views quoted (with name) in"
+    temptriple_name = "quotes (with name) the views of"
+    temptriple_name_reverse = "has views quoted (with name) in"
+
+
+class WorkQuotesWithoutNameTheViewsOfPerson(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Person
+    name = "quotes (without name) the views of"
+    name_reverse = "has views quoted (without name) in"
+    temptriple_name = "quotes (without name) the views of"
+    temptriple_name_reverse = "has views quoted (without name) in"
+
+
+class WorkRecordsTheTeachingOfPerson(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Person
+    name = "records the teaching of"
+    name_reverse = "has their teaching recorded in"
+    temptriple_name = "records the teaching of"
+    temptriple_name_reverse = "has their teaching recorded in"
+
+
+class PersonRefersWithNameToTheViewsOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "refers (with name) to the views of"
+    name_reverse = "has views referred to (with name) by"
+    temptriple_name = "refers (with name) to the views of"
+    temptriple_name_reverse = "has views referred to (with name) by"
+
+
+class PersonRefersWithoutNameToTheViewsOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "refers (without name) to the views of"
+    name_reverse = "has views referred to (without name) by"
+    temptriple_name = "refers (without name) to the views of"
+    temptriple_name_reverse = "has views referred to (without name) by"
+
+
+class PersonRequestorOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "requestor of"
+    name_reverse = "requested by"
+    temptriple_name = "requestor of"
+    temptriple_name_reverse = "requested by"
+
+
+class PersonScribeOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "scribe of"
+    name_reverse = "copied/written down by"
+    temptriple_name = "scribe of"
+    temptriple_name_reverse = "copied/written down by"
+
+
+class PersonSiblingOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "sibling of"
+    name_reverse = "sibling of"
+    temptriple_name = "sibling of"
+    temptriple_name_reverse = "sibling of"
+
+
+class PersonSpiritualFriendOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "spiritual friend of"
+    name_reverse = "has as spiritual friend"
+    temptriple_name = "spiritual friend of"
+    temptriple_name_reverse = "has as spiritual friend"
+
+
+class PersonSponsorOfInstance(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Instance
+    name = "sponsor of"
+    name_reverse = "sponsored by"
+    temptriple_name = "sponsor of"
+    temptriple_name_reverse = "sponsored by"
+
+
+class PersonStudentOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "student of"
+    name_reverse = "teacher of"
+    temptriple_name = "student of"
+    temptriple_name_reverse = "teacher of"
+
+
+class PersonStudiedWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "studied"
+    name_reverse = "studied by"
+    temptriple_name = "studied"
+    temptriple_name_reverse = "studied by"
+
+
+class PersonTeachesWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "teaches"
+    name_reverse = "taught by"
+    temptriple_name = "teaches"
+    temptriple_name_reverse = "taught by"
+
+
+class PersonUncleMaternalPaternalOfPerson(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Person
+    name = "uncle (maternal/paternal) of"
+    name_reverse = "nephew (maternal/paternal) of"
+    temptriple_name = "uncle (maternal/paternal) of"
+    temptriple_name_reverse = "nephew (maternal/paternal) of"
