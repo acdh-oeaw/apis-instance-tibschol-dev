@@ -3,8 +3,8 @@
 
 {% block scriptHeader %}
 {{ block.super }}
-
-{% load relations %}
+    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+    {% load relations %}
 
 {% if highlighter_active %}
 <link rel="stylesheet"
@@ -25,7 +25,7 @@
 
 {% block content %}
 {% load django_tables2 %}
-    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+
 
     {% if instance %}
 <div class="container-fluid">
