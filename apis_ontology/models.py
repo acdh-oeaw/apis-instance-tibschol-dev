@@ -225,12 +225,12 @@ class TibScholRelation(models.Model):
         verbose_name="Confidence",
         max_length=1000,
     )
-    start_date = models.DateField(blank=True, null=True)
-    start_start_date = models.DateField(blank=True, null=True)
-    start_end_date = models.DateField(blank=True, null=True)
-    end_date = models.DateField(blank=True, null=True)
-    end_start_date = models.DateField(blank=True, null=True)
-    end_end_date = models.DateField(blank=True, null=True)
+    start_date = models.DateField(blank=True, null=True, editable=False)
+    start_start_date = models.DateField(blank=True, null=True, editable=False)
+    start_end_date = models.DateField(blank=True, null=True, editable=False)
+    end_date = models.DateField(blank=True, null=True, editable=False)
+    end_start_date = models.DateField(blank=True, null=True, editable=False)
+    end_end_date = models.DateField(blank=True, null=True, editable=False)
     start_date_written = models.CharField(
         max_length=255,
         blank=True,
