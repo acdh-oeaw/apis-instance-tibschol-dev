@@ -3,9 +3,9 @@
 
 {% block scriptHeader %}
 {{ block.super }}
-    <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
-    {% load relations %}
-
+<script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
+{% load relations %}
+{% relations_css %}
 {% if highlighter_active %}
 <link rel="stylesheet"
       href="{% static 'apis_highlighter/apis_highlighter.css' %}" />
