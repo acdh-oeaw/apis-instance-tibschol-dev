@@ -75,8 +75,9 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {% for ent in entities_links %}
                                     <a class="dropdown-item"
-                                        href="{% url 'apis:apis_entities:generic_entities_list' ent.0 %}">{{ ent.1
-                                        }}</a>
+                                        href="{% url 'apis:apis_entities:generic_entities_list' ent.0 %}">
+                                        {{ ent.1}}
+                                    </a>
                                     {% endfor %}
                                     <a class="dropdown-item" href="{% url 'apis:apis_metainfo:uri_browse' %}">URIs</a>
                                 </div>
@@ -89,8 +90,8 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {% for ent in relations_list %}
                                     <a class="dropdown-item"
-                                        href="{% url 'apis:apis_relations:generic_relations_list' ent %}">{{ ent|title
-                                        }}</a>
+                                        href="{% url 'apis:apis_relations:generic_relations_list' ent %}">
+                                        {{ ent|title}}</a>
                                     {% endfor %}
                                 </div>
                             </li>
