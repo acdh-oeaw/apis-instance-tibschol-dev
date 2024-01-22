@@ -37,12 +37,14 @@
     <link href="https://fonts.googleapis.com/css?family=Libre+Franklin:400,500" rel="stylesheet" />
     <link rel="stylesheet" href="{{ PROJECT_CSS }}?rnd=1" rel="stylesheet" />
     <link rel="stylesheet" href="{{ SHARED_URL }}apis/libraries/scroll-to-top/css/ap-scroll-top.min.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
 
     {% block scriptHeader %}{% endblock %}
 
-</head>
+    </head>
 
-<body role="document" class="home contained fixed-nav" id="body" style="height: unset!important">
+    <body role="document" class="home contained fixed-nav" id="body" style="height: unset!important"
+        hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <div class="hfeed site" id="page">
         <div class="wrapper-fluid wrapper-navbar sticky-navbar" id="wrapper-navbar" itemscope=""
             itemtype="http://schema.org/WebSite">
