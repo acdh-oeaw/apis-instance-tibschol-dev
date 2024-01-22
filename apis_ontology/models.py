@@ -257,6 +257,14 @@ class TibScholRelation(models.Model):
         "end_date_written",
     ]
 
+    @property
+    def subject_type(self):
+        return str(self.subj_model.__name__).lower()
+
+    @property
+    def object_type(self):
+        return str(self.obj_model.__name__).lower()
+
     class Meta:
         abstract = True
 
