@@ -6,8 +6,12 @@ from apis_core.relations.models import Relation
 class CustomRelationTableEdit(RelationTable):
 
     id = tables.TemplateColumn("{{ record.id }}")
-    subject = tables.TemplateColumn("{{ record.subj }}")
-    object = tables.TemplateColumn("{{ record.obj }}")
+    subject = tables.TemplateColumn(
+        "<a href='/entities/entity/{{ record.subj_model  }}/{{ record.subj.pk }}'>{{record.subj}} ({{record.subj.pk}})</a>"
+    )
+    object = tables.TemplateColumn(
+        "<a href='/entities/entity/{{ record.obj_model  }}/{{ record.obj.pk }}'>{{record.obj}} ({{record.obj.pk}})</a>"
+    )
     description = tables.TemplateColumn("{{ record.name }}")
     edit = tables.TemplateColumn(
         "<a href='{% url 'apis:relationupdate' record.id %}'>Edit</a>"
@@ -37,8 +41,12 @@ class CustomRelationTableEdit(RelationTable):
 class CustomRelationTableView(RelationTable):
 
     id = tables.TemplateColumn("{{ record.id }}")
-    subject = tables.TemplateColumn("{{ record.subj }}")
-    object = tables.TemplateColumn("{{ record.obj }}")
+    subject = tables.TemplateColumn(
+        "<a href='/entities/entity/{{ record.subj_model  }}/{{ record.subj.pk }}'>{{record.subj}} ({{record.subj.pk}})</a>"
+    )
+    object = tables.TemplateColumn(
+        "<a href='/entities/entity/{{ record.obj_model  }}/{{ record.obj.pk }}'>{{record.obj}} ({{record.obj.pk}})</a>"
+    )
     description = tables.TemplateColumn("{{ record.name }}")
     confidence = tables.TemplateColumn("{{ record.confidence }}")
     support_notes = tables.TemplateColumn(
