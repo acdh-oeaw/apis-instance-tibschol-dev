@@ -7,10 +7,10 @@ class CustomRelationTableEdit(RelationTable):
 
     id = tables.TemplateColumn("{{ record.id }}")
     subject = tables.TemplateColumn(
-        "<a href='/entities/entity/{{ record.subj_model  }}/{{ record.subj.pk }}'>{{record.subj}} ({{record.subj.pk}})</a>"
+        "<a href='/apis/entities/entity/{{ record.subject_type  }}/{{ record.subj.pk }}/detail'>{{record.subj}} ({{record.subj.pk}})</a>"
     )
     object = tables.TemplateColumn(
-        "<a href='/entities/entity/{{ record.obj_model  }}/{{ record.obj.pk }}'>{{record.obj}} ({{record.obj.pk}})</a>"
+        "<a href='/apis/entities/entity/{{ record.object_type  }}/{{ record.obj.pk }}/detail'>{{record.obj}} ({{record.obj.pk}})</a>"
     )
     description = tables.TemplateColumn("{{ record.name }}")
     edit = tables.TemplateColumn(
@@ -42,10 +42,10 @@ class CustomRelationTableView(RelationTable):
 
     id = tables.TemplateColumn("{{ record.id }}")
     subject = tables.TemplateColumn(
-        "<a href='/entities/entity/{{ record.subj_model  }}/{{ record.subj.pk }}'>{{record.subj}} ({{record.subj.pk}})</a>"
+        "<a href='/apis/entities/entity/{{ record.subject_type  }}/{{ record.subj.pk }}/detail'>{{record.subj}} ({{record.subj.pk}})</a>"
     )
     object = tables.TemplateColumn(
-        "<a href='/entities/entity/{{ record.obj_model  }}/{{ record.obj.pk }}'>{{record.obj}} ({{record.obj.pk}})</a>"
+        "<a href='/apis/entities/entity/{{ record.object_type  }}/{{ record.obj.pk }}/detail'>{{record.obj}} ({{record.obj.pk}})</a>"
     )
     description = tables.TemplateColumn("{{ record.name }}")
     confidence = tables.TemplateColumn("{{ record.confidence }}")
