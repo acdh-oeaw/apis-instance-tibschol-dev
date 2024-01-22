@@ -265,7 +265,7 @@ class PersonActiveAtPlace(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Place
     name = "active at"
-    name_reverse = "place of activity of"
+    reverse_name = "place of activity of"
     temptriple_name = "active at"
     temptriple_name_reverse = "place of activity of"
 
@@ -274,7 +274,7 @@ class PersonAddresseeOfWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "addressee of"
-    name_reverse = "addressed to"
+    reverse_name = "addressed to"
     temptriple_name = "addressee of"
     temptriple_name_reverse = "addressed to"
 
@@ -283,7 +283,7 @@ class PersonAuntMaternalPaternalOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "aunt (maternal/paternal) of"
-    name_reverse = "nephew (maternal/paternal) of"
+    reverse_name = "nephew (maternal/paternal) of"
     temptriple_name = "aunt (maternal/paternal) of"
     temptriple_name_reverse = "nephew (maternal/paternal) of"
 
@@ -292,7 +292,7 @@ class PersonAuthorOfWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "author of"
-    name_reverse = "composed by"
+    reverse_name = "composed by"
     temptriple_name = "author of"
     temptriple_name_reverse = "composed by"
 
@@ -301,7 +301,7 @@ class PersonBiographedInWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "biographed in"
-    name_reverse = "biography of"
+    reverse_name = "biography of"
     temptriple_name = "biographed in"
     temptriple_name_reverse = "biography of"
 
@@ -310,7 +310,7 @@ class PersonBiographerOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "biographer of"
-    name_reverse = "biographed by"
+    reverse_name = "biographed by"
     temptriple_name = "biographer of"
     temptriple_name_reverse = "biographed by"
 
@@ -319,7 +319,7 @@ class PersonCitesWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "cites"
-    name_reverse = "is cited by"
+    reverse_name = "is cited by"
     temptriple_name = "cites"
     temptriple_name_reverse = "is cited by"
 
@@ -328,7 +328,7 @@ class WorkCommentaryOnWork(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Work
     name = "commentary on"
-    name_reverse = "has as a commentary"
+    reverse_name = "has as a commentary"
     temptriple_name = "commentary on"
     temptriple_name_reverse = "has as a commentary"
 
@@ -337,7 +337,7 @@ class WorkComposedAtPlace(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Place
     name = "composed at"
-    name_reverse = "place of composition for"
+    reverse_name = "place of composition for"
     temptriple_name = "composed at"
     temptriple_name_reverse = "place of composition for"
 
@@ -346,7 +346,7 @@ class WorkContainsCitationsOfWork(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Work
     name = "contains citations of"
-    name_reverse = "is cited in"
+    reverse_name = "is cited in"
     temptriple_name = "contains citations of"
     temptriple_name_reverse = "is cited in"
 
@@ -355,7 +355,7 @@ class InstanceCopiedWrittenDownAtPlace(Relation, TibScholRelation):
     subj_model = Instance
     obj_model = Place
     name = "copied/written down at"
-    name_reverse = "place of scribing for"
+    reverse_name = "place of scribing for"
     temptriple_name = "copied/written down at"
     temptriple_name_reverse = "place of scribing for"
 
@@ -364,7 +364,7 @@ class PersonDirectPredecessorInLineageOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "direct predecessor (in lineage) of"
-    name_reverse = "direct successor (in lineage) of"
+    reverse_name = "direct successor (in lineage) of"
     temptriple_name = "direct predecessor (in lineage) of"
     temptriple_name_reverse = "direct successor (in lineage) of"
 
@@ -373,7 +373,7 @@ class PersonDiscipleOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "disciple of"
-    name_reverse = "spiritual teacher of"
+    reverse_name = "spiritual teacher of"
     temptriple_name = "disciple of"
     temptriple_name_reverse = "spiritual teacher of"
 
@@ -382,7 +382,7 @@ class PersonEditorOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "editor of"
-    name_reverse = "edited by"
+    reverse_name = "edited by"
     temptriple_name = "editor of"
     temptriple_name_reverse = "edited by"
 
@@ -391,7 +391,7 @@ class PersonFellowMonkOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "fellow monk of"
-    name_reverse = "fellow monk of"
+    reverse_name = "fellow monk of"
     temptriple_name = "fellow monk of"
     temptriple_name_reverse = "fellow monk of"
 
@@ -400,7 +400,7 @@ class PersonFellowStudentOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "fellow student of"
-    name_reverse = "fellow student of"
+    reverse_name = "fellow student of"
     temptriple_name = "fellow student of"
     temptriple_name_reverse = "fellow student of"
 
@@ -409,7 +409,7 @@ class WorkHasAsAnInstanceInstance(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Instance
     name = "has as an instance"
-    name_reverse = "instance of"
+    reverse_name = "instance of"
     temptriple_name = "has as an instance"
     temptriple_name_reverse = "instance of"
 
@@ -418,7 +418,7 @@ class PersonHasOtherTypeOfPersonalRelationToPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "has other type of personal relation to"
-    name_reverse = "has other type of personal relation to"
+    reverse_name = "has other type of personal relation to"
     temptriple_name = "has other type of personal relation to"
     temptriple_name_reverse = "has other type of personal relation to"
 
@@ -427,7 +427,7 @@ class PersonIllustratorOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "illustrator of"
-    name_reverse = "illustrated by"
+    reverse_name = "illustrated by"
     temptriple_name = "illustrator of"
     temptriple_name_reverse = "illustrated by"
 
@@ -436,7 +436,7 @@ class InstanceIsCopiedFromInstance(Relation, TibScholRelation):
     subj_model = Instance
     obj_model = Instance
     name = "is copied from"
-    name_reverse = "is source for"
+    reverse_name = "is source for"
     temptriple_name = "is copied from"
     temptriple_name_reverse = "is source for"
 
@@ -445,7 +445,7 @@ class PlaceIsLocatedWithinPlace(Relation, TibScholRelation):
     subj_model = Place
     obj_model = Place
     name = "is located within"
-    name_reverse = "contains"
+    reverse_name = "contains"
     temptriple_name = "is located within"
     temptriple_name_reverse = "contains"
 
@@ -454,7 +454,7 @@ class PersonLenderOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "lender of"
-    name_reverse = "lent by"
+    reverse_name = "lent by"
     temptriple_name = "lender of"
     temptriple_name_reverse = "lent by"
 
@@ -463,7 +463,7 @@ class WorkNamesPerson(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Person
     name = "names"
-    name_reverse = "is named in"
+    reverse_name = "is named in"
     temptriple_name = "names"
     temptriple_name_reverse = "is named in"
 
@@ -472,7 +472,7 @@ class WorkNamesWork(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Work
     name = "names"
-    name_reverse = "is named in"
+    reverse_name = "is named in"
     temptriple_name = "names"
     temptriple_name_reverse = "is named in"
 
@@ -481,7 +481,7 @@ class PersonOrdinatorOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "ordinator of"
-    name_reverse = "ordained by"
+    reverse_name = "ordained by"
     temptriple_name = "ordinator of"
     temptriple_name_reverse = "ordained by"
 
@@ -490,7 +490,7 @@ class PersonOwnerOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "owner of"
-    name_reverse = "owned by"
+    reverse_name = "owned by"
     temptriple_name = "owner of"
     temptriple_name_reverse = "owned by"
 
@@ -499,7 +499,7 @@ class PersonParentOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "parent of"
-    name_reverse = "child of"
+    reverse_name = "child of"
     temptriple_name = "parent of"
     temptriple_name_reverse = "child of"
 
@@ -508,7 +508,7 @@ class PersonPatronOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "patron of"
-    name_reverse = "protegee of"
+    reverse_name = "protegee of"
     temptriple_name = "patron of"
     temptriple_name_reverse = "protegee of"
 
@@ -517,7 +517,7 @@ class PersonPromoterOfWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "promoter of"
-    name_reverse = "promoted by"
+    reverse_name = "promoted by"
     temptriple_name = "promoter of"
     temptriple_name_reverse = "promoted by"
 
@@ -526,7 +526,7 @@ class PersonPrompterOfWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "prompter of"
-    name_reverse = "prompted by"
+    reverse_name = "prompted by"
     temptriple_name = "prompter of"
     temptriple_name_reverse = "prompted by"
 
@@ -535,7 +535,7 @@ class WorkQuotesWithNameTheViewsOfPerson(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Person
     name = "quotes (with name) the views of"
-    name_reverse = "has views quoted (with name) in"
+    reverse_name = "has views quoted (with name) in"
     temptriple_name = "quotes (with name) the views of"
     temptriple_name_reverse = "has views quoted (with name) in"
 
@@ -544,7 +544,7 @@ class WorkQuotesWithoutNameTheViewsOfPerson(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Person
     name = "quotes (without name) the views of"
-    name_reverse = "has views quoted (without name) in"
+    reverse_name = "has views quoted (without name) in"
     temptriple_name = "quotes (without name) the views of"
     temptriple_name_reverse = "has views quoted (without name) in"
 
@@ -553,7 +553,7 @@ class WorkRecordsTheTeachingOfPerson(Relation, TibScholRelation):
     subj_model = Work
     obj_model = Person
     name = "records the teaching of"
-    name_reverse = "has their teaching recorded in"
+    reverse_name = "has their teaching recorded in"
     temptriple_name = "records the teaching of"
     temptriple_name_reverse = "has their teaching recorded in"
 
@@ -562,7 +562,7 @@ class PersonRefersWithNameToTheViewsOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "refers (with name) to the views of"
-    name_reverse = "has views referred to (with name) by"
+    reverse_name = "has views referred to (with name) by"
     temptriple_name = "refers (with name) to the views of"
     temptriple_name_reverse = "has views referred to (with name) by"
 
@@ -571,7 +571,7 @@ class PersonRefersWithoutNameToTheViewsOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "refers (without name) to the views of"
-    name_reverse = "has views referred to (without name) by"
+    reverse_name = "has views referred to (without name) by"
     temptriple_name = "refers (without name) to the views of"
     temptriple_name_reverse = "has views referred to (without name) by"
 
@@ -580,7 +580,7 @@ class PersonRequestorOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "requestor of"
-    name_reverse = "requested by"
+    reverse_name = "requested by"
     temptriple_name = "requestor of"
     temptriple_name_reverse = "requested by"
 
@@ -589,7 +589,7 @@ class PersonScribeOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "scribe of"
-    name_reverse = "copied/written down by"
+    reverse_name = "copied/written down by"
     temptriple_name = "scribe of"
     temptriple_name_reverse = "copied/written down by"
 
@@ -598,7 +598,7 @@ class PersonSiblingOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "sibling of"
-    name_reverse = "sibling of"
+    reverse_name = "sibling of"
     temptriple_name = "sibling of"
     temptriple_name_reverse = "sibling of"
 
@@ -607,7 +607,7 @@ class PersonSpiritualFriendOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "spiritual friend of"
-    name_reverse = "has as spiritual friend"
+    reverse_name = "has as spiritual friend"
     temptriple_name = "spiritual friend of"
     temptriple_name_reverse = "has as spiritual friend"
 
@@ -616,7 +616,7 @@ class PersonSponsorOfInstance(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Instance
     name = "sponsor of"
-    name_reverse = "sponsored by"
+    reverse_name = "sponsored by"
     temptriple_name = "sponsor of"
     temptriple_name_reverse = "sponsored by"
 
@@ -625,7 +625,7 @@ class PersonStudentOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "student of"
-    name_reverse = "teacher of"
+    reverse_name = "teacher of"
     temptriple_name = "student of"
     temptriple_name_reverse = "teacher of"
 
@@ -634,7 +634,7 @@ class PersonStudiedWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "studied"
-    name_reverse = "studied by"
+    reverse_name = "studied by"
     temptriple_name = "studied"
     temptriple_name_reverse = "studied by"
 
@@ -643,7 +643,7 @@ class PersonTeachesWork(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Work
     name = "teaches"
-    name_reverse = "taught by"
+    reverse_name = "taught by"
     temptriple_name = "teaches"
     temptriple_name_reverse = "taught by"
 
@@ -652,6 +652,6 @@ class PersonUncleMaternalPaternalOfPerson(Relation, TibScholRelation):
     subj_model = Person
     obj_model = Person
     name = "uncle (maternal/paternal) of"
-    name_reverse = "nephew (maternal/paternal) of"
+    reverse_name = "nephew (maternal/paternal) of"
     temptriple_name = "uncle (maternal/paternal) of"
     temptriple_name_reverse = "nephew (maternal/paternal) of"
