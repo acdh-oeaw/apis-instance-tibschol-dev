@@ -5,6 +5,8 @@
 {{ block.super }}
 <script src="https://unpkg.com/htmx.org@latest/dist/htmx.js"></script>
 {% load relations %}
+{% load custom_relations %}
+
 {% relations_css %}
 {% if highlighter_active %}
 <link rel="stylesheet"
@@ -209,7 +211,7 @@
                                     </div>
                                     <div id="collapse{{ forloop.counter }}" class="card-collapse collapse" role="tabcard" aria-labelledby="heading{{ forloop.counter }}">
                                         <div id="tab_{{ obj.2 }}" class="card-body">
-                                            {% relations_table instance=instance tocontenttype=contenttype as table %}
+                                            {% custom_relations_table_edit instance=instance tocontenttype=contenttype as table %}
                                             {% render_table table %}
 
                                             {% relations_links instance=instance tocontenttype=contenttype htmx=True %}
