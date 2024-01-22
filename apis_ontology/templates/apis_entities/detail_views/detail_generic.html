@@ -6,6 +6,8 @@
 
 {% load relations %}
 
+{% load custom_relations %}
+
 {% relations_css %}
 {% block title %}{{ object }}{% endblock %}
 
@@ -318,7 +320,7 @@
                                             </div>
                                             <div role="tabcard">
                                                 <div class="card-body">
-                                                    {% relations_table instance=object tocontenttype=contenttype as table %}
+                                                    {% custom_relations_table_view instance=object tocontenttype=contenttype as table %}
 	                                                {% render_table table %}
                                                 </div>
                                             </div>
