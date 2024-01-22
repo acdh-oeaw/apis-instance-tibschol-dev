@@ -5,9 +5,7 @@ from apis_core.relations.models import Relation
 
 class CustomRelationTableEdit(RelationTable):
 
-    id = tables.TemplateColumn(
-        "<a href='{% url 'apis:relationupdate' record.id %}'>{{ record.id }}</a>"
-    )
+    id = tables.TemplateColumn("{{ record.id }}")
     subject = tables.TemplateColumn("{{ record.subj }}")
     object = tables.TemplateColumn("{{ record.obj }}")
     description = tables.TemplateColumn("{{ record.name }}")
@@ -15,10 +13,24 @@ class CustomRelationTableEdit(RelationTable):
         "<a href='{% url 'apis:relationupdate' record.id %}'>Edit</a>"
     )
     delete = tables.TemplateColumn(template_name="tables/delete.html")
+    confidence = tables.TemplateColumn("{{ record.confidence }}")
+    support_notes = tables.TemplateColumn(
+        "{{ record.support_notes|default:''|truncatechars:30 }}\n{{record.notes|default:''|truncatechars:30}}"
+    )
+    tei_refs = tables.TemplateColumn("<a href='#{{record.tei_refs}}'>TEI</a>")
 
     class Meta:
         model = Relation
-        fields = ["id", "subject", "description", "object", "edit"]
+        fields = [
+            "id",
+            "subject",
+            "description",
+            "object",
+            "confidence",
+            "support_notes",
+            "tei_refs",
+            "edit",
+        ]
         sequence = tuple(fields)
 
 
@@ -28,9 +40,22 @@ class CustomRelationTableView(RelationTable):
     subject = tables.TemplateColumn("{{ record.subj }}")
     object = tables.TemplateColumn("{{ record.obj }}")
     description = tables.TemplateColumn("{{ record.name }}")
+    confidence = tables.TemplateColumn("{{ record.confidence }}")
+    support_notes = tables.TemplateColumn(
+        "{{ record.support_notes|default:''|truncatechars:30 }}\n{{record.notes|default:''|truncatechars:30}}"
+    )
+    tei_refs = tables.TemplateColumn("<a href='#{{record.tei_refs}}'>TEI</a>")
 
     class Meta:
         model = Relation
-        fields = ["id", "subject", "description", "object"]
+        fields = [
+            "id",
+            "subject",
+            "description",
+            "object",
+            "confidence",
+            "support_notes",
+            "tei_refs",
+        ]
         exclude = ["edit", "delete"]
         sequence = tuple(fields)
