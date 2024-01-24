@@ -22,6 +22,7 @@ class CustomRelationTableEdit(RelationTable):
         "{{ record.support_notes|default:''|truncatechars:30 }}\n{{record.notes|default:''|truncatechars:30}}"
     )
     tei_refs = tables.TemplateColumn("<a href='#{{record.tei_refs}}'>TEI</a>")
+    zotero = tables.TemplateColumn("{{ record.zotero_refs|default:'' }}")
 
     class Meta:
         model = Relation
@@ -33,8 +34,10 @@ class CustomRelationTableEdit(RelationTable):
             "confidence",
             "support_notes",
             "tei_refs",
+            "zotero",
             "edit",
         ]
+        exclude = ["confidence"]
         sequence = tuple(fields)
 
 
@@ -53,6 +56,7 @@ class CustomRelationTableView(RelationTable):
         "{{ record.support_notes|default:''|truncatechars:30 }}\n{{record.notes|default:''|truncatechars:30}}"
     )
     tei_refs = tables.TemplateColumn("<a href='#{{record.tei_refs}}'>TEI</a>")
+    zotero = tables.TemplateColumn("{{ record.zotero_refs|default:'' }}")
 
     class Meta:
         model = Relation
@@ -63,7 +67,8 @@ class CustomRelationTableView(RelationTable):
             "object",
             "confidence",
             "support_notes",
+            "zotero",
             "tei_refs",
         ]
-        exclude = ["edit", "delete"]
+        exclude = ["edit", "delete", "confidence"]
         sequence = tuple(fields)
