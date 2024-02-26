@@ -171,7 +171,7 @@ class Work(TempEntityClass):
     def author(self):
         try:
             author = PersonAuthorOfWork.objects.filter(obj=self)
-            return Person(author[0])
+            return author[0]
         except Exception as e:
             print(e)
             return
