@@ -98,20 +98,18 @@ class Instance(TempEntityClass):
     @cached_property
     def work(self):
         try:
-            # WORK_REL = Property.objects.get(name="has as an instance")
-            # work = Triple.objects.filter(prop=WORK_REL, obj=self)
-            # return work[0].subj
-            work = WorkHasAsAnInstanceInstance.objects.filter(obj=self)
-            return Work(work[0])
+            work_has_as_instance = WorkHasAsAnInstanceInstance.objects.filter(obj=self)
+            return work_has_as_instance[0].subj
         except Exception as e:
+            print("Error while fetching work associated with instance:", e)
             return
 
     @cached_property
     def author(self):
         try:
-            return self.work.author
+            return Work.objects.get(id=self.work.id).author
         except Exception as e:
-            print(e)
+            print("Error while getting author info for instance", e)
             return
 
 
@@ -171,7 +169,7 @@ class Work(TempEntityClass):
     def author(self):
         try:
             author = PersonAuthorOfWork.objects.filter(obj=self)
-            return author[0]
+            return author[0].subj
         except Exception as e:
             print(e)
             return
