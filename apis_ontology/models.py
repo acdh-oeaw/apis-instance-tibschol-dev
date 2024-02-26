@@ -98,9 +98,11 @@ class Instance(TempEntityClass):
     @cached_property
     def work(self):
         try:
-            WORK_REL = Property.objects.get(name="has as an instance")
-            work = Triple.objects.filter(prop=WORK_REL, obj=self)
-            return work[0].subj
+            # WORK_REL = Property.objects.get(name="has as an instance")
+            # work = Triple.objects.filter(prop=WORK_REL, obj=self)
+            # return work[0].subj
+            work = WorkHasAsAnInstanceInstance.objects.filter(obj=self)
+            return Work(work[0])
         except Exception as e:
             return
 
@@ -168,10 +170,8 @@ class Work(TempEntityClass):
     @cached_property
     def author(self):
         try:
-            # TODO: Should this be within property?
-            AUTHOR_REL = Property.objects.get(name="author of")
-            author = Triple.objects.filter(prop=AUTHOR_REL, obj=self)
-            return author[0].subj
+            author = PersonAuthorOfWork.objects.filter(obj=self)
+            return Person(author[0])
         except Exception as e:
             print(e)
             return
