@@ -11,7 +11,6 @@ def name_filter(queryset, name, value):
 
 
 def instance_name_filter(queryset, name, value):
-    print("Name: %s, Value: %s", name, value)
     return queryset.filter(
         Q(id__icontains=value)
         | Q(name__icontains=value)

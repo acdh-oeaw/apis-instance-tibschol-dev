@@ -107,7 +107,6 @@ class Instance(TempEntityClass):
     @cached_property
     def author(self):
         try:
-            print(self.work, self.work.author)
             return self.work.author
         except Exception as e:
             print(e)
