@@ -2,7 +2,7 @@ import os
 import re
 
 import dj_database_url
-from apis.settings.base import *
+from apis_acdhch_default_settings.settings import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
