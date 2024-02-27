@@ -42,7 +42,6 @@ REST_FRAMEWORK["DEFAULT_PERMISSION_CLASSES"] = (
 
 # HAYSTACK_DEFAULT_OPERATOR = "OR"
 
-DEBUG = True
 DEV_VERSION = False
 
 SPECTACULAR_SETTINGS["COMPONENT_SPLIT_REQUEST"] = True
@@ -67,7 +66,6 @@ APIS_AUTOCOMPLETE_SETTINGS = "apis_ontology.settings.autocomplete_settings"
 
 INSTALLED_APPS += ["apis_core.relations"]
 
-INSTALLED_APPS.insert(0, "apis_override_select2js")  # must be added at the beginning
 
 APIS_RELATIONS_FILTER_EXCLUDE += ["annotation", "annotation_set_relation"]
 
