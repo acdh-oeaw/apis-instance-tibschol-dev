@@ -722,3 +722,10 @@ class PersonTranslatorOfWork(Relation, TibScholRelation):
     obj_model = Work
     name = "translator of"
     reverse_name = "translated by"
+
+
+class PersonAnnotatorOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "annotator of"
+    reverse_name = "annotated by"
