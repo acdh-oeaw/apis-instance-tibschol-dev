@@ -633,6 +633,14 @@ class PersonStudentOfPerson(Relation, TibScholRelation):
     reverse_name = "teacher of"
     temptriple_name = "student of"
     temptriple_name_reverse = "teacher of"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonStudiedWork(Relation, TibScholRelation):
@@ -660,3 +668,17 @@ class PersonUncleMaternalPaternalOfPerson(Relation, TibScholRelation):
     reverse_name = "nephew (maternal/paternal) of"
     temptriple_name = "uncle (maternal/paternal) of"
     temptriple_name_reverse = "nephew (maternal/paternal) of"
+
+
+class WorkTaughtAtPlace(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Place
+    name = "taught at"
+    reverse_name = "place of teaching of"
+
+
+class PersonTranslatorOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "translator of"
+    reverse_name = "translated by"
