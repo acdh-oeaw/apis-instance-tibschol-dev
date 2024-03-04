@@ -633,6 +633,14 @@ class PersonStudentOfPerson(Relation, TibScholRelation):
     reverse_name = "teacher of"
     temptriple_name = "student of"
     temptriple_name_reverse = "teacher of"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonStudiedWork(Relation, TibScholRelation):
