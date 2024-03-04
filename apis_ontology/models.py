@@ -372,6 +372,14 @@ class PersonDirectPredecessorInLineageOfPerson(Relation, TibScholRelation):
     reverse_name = "direct successor (in lineage) of"
     temptriple_name = "direct predecessor (in lineage) of"
     temptriple_name_reverse = "direct successor (in lineage) of"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonDiscipleOfPerson(Relation, TibScholRelation):
@@ -381,6 +389,14 @@ class PersonDiscipleOfPerson(Relation, TibScholRelation):
     reverse_name = "spiritual teacher of"
     temptriple_name = "disciple of"
     temptriple_name_reverse = "spiritual teacher of"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonEditorOfInstance(Relation, TibScholRelation):
@@ -570,6 +586,14 @@ class PersonRefersWithNameToTheViewsOfPerson(Relation, TibScholRelation):
     reverse_name = "has views referred to (with name) by"
     temptriple_name = "refers (with name) to the views of"
     temptriple_name_reverse = "has views referred to (with name) by"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonRefersWithoutNameToTheViewsOfPerson(Relation, TibScholRelation):
@@ -579,6 +603,14 @@ class PersonRefersWithoutNameToTheViewsOfPerson(Relation, TibScholRelation):
     reverse_name = "has views referred to (without name) by"
     temptriple_name = "refers (without name) to the views of"
     temptriple_name_reverse = "has views referred to (without name) by"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonRequestorOfPerson(Relation, TibScholRelation):
@@ -588,6 +620,14 @@ class PersonRequestorOfPerson(Relation, TibScholRelation):
     reverse_name = "requested by"
     temptriple_name = "requestor of"
     temptriple_name_reverse = "requested by"
+    subject_of_teaching = (
+        models.CharField(  # TODO: Controlled vocabulary with Work.Subject
+            max_length=255,
+            blank=True,
+            null=True,
+            verbose_name="subject of teaching",
+        )
+    )
 
 
 class PersonScribeOfInstance(Relation, TibScholRelation):
