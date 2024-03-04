@@ -668,3 +668,10 @@ class PersonUncleMaternalPaternalOfPerson(Relation, TibScholRelation):
     reverse_name = "nephew (maternal/paternal) of"
     temptriple_name = "uncle (maternal/paternal) of"
     temptriple_name_reverse = "nephew (maternal/paternal) of"
+
+
+class WorkTaughtAtPlace(Relation, TibScholRelation):
+    subj_model = Work
+    obj_model = Place
+    name = "taught at"
+    reverse_name = "place of teaching of"
