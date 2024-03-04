@@ -43,7 +43,9 @@ class CustomRelationTableEdit(RelationTable):
 
 class CustomRelationTableView(RelationTable):
 
-    id = tables.TemplateColumn("{{ record.id }}")
+    id = tables.TemplateColumn(
+        "<a href='{% url 'apis:relationupdate' record.id %}'>{{ record.id }}</a>"
+    )
     subject = tables.TemplateColumn(
         "<a href='/apis/entities/entity/{{ record.subject_type  }}/{{ record.subj.pk }}/detail'>{{record.subj}} ({{record.subj.pk}})</a>"
     )
