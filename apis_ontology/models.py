@@ -63,7 +63,7 @@ class Instance(TempEntityClass):
     external_link = models.TextField(
         blank=True, null=True, verbose_name="External links"
     )
-    zotero_ref = models.CharField(max_length=255, blank=True, null=True)
+    zotero_ref = models.TextField(blank=True, null=True, verbose_name="Zotero")
 
     @property
     def citation(self):
