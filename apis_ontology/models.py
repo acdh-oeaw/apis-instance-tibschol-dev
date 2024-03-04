@@ -675,3 +675,10 @@ class WorkTaughtAtPlace(Relation, TibScholRelation):
     obj_model = Place
     name = "taught at"
     reverse_name = "place of teaching of"
+
+
+class PersonTranslatorOfWork(Relation, TibScholRelation):
+    subj_model = Person
+    obj_model = Work
+    name = "translator of"
+    reverse_name = "translated by"
